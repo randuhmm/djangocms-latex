@@ -7,6 +7,7 @@ Tests for `djangocms_latex` modules module.
 """
 from __future__ import absolute_import, print_function, unicode_literals
 
+from cms.api import add_plugin
 from cms.views import details
 from django.contrib.auth.models import AnonymousUser
 from djangocms_latex.models import LatexEquationPlugin
@@ -16,20 +17,22 @@ from . import BaseTest
 
 class TestLatexModels(BaseTest):
 
-    example_equation = r'x=\\frac{a}{b}'
+    example_equation = r'x=\frac{a}{b}'
 
-    def test_add_plugin(self):
-        from cms.api import add_plugin
-        page_1, page_2 = self.get_pages()
+    def setUp(self):
+        self.page_1, self.page_2 = self.get_pages()
         data = {
             'equation': self.example_equation,
         }
-        placeholder = page_1.placeholders.get(slot='content')
+
+        placeholder = self.page_1.placeholders.get(slot='content')
         add_plugin(placeholder, 'LatexEquationCMSPlugin', 'en', **data)
-        page_1.publish('en')
+        self.page_1.publish('en')
+
+    def test_add_plugin(self):
 
         # Get published page
-        public = page_1.get_public_object()
+        public = self.page_1.get_public_object()
         # plugin is the plugin instance we're going to render
         plugin = public.placeholders.get(slot='content').get_plugins_list()[0]
 

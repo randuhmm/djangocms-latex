@@ -40,6 +40,7 @@ class LatexEquationPlugin(CMSPlugin):
         self._original_equation = self.equation
 
     def post_save(self, created):
+
         if self._original_equation != self.equation or created:
             self._original_equation = self.equation
             original_dir = os.getcwd()
@@ -64,9 +65,9 @@ class LatexEquationPlugin(CMSPlugin):
                     self.image.save(image_name, image_file)
 
                 # Remove temporary files
+                os.chdir(original_dir)
                 shutil.rmtree(out_dir)
 
             except Exception, e:
+                os.chdir(original_dir)
                 print e
-
-            os.chdir(original_dir)
