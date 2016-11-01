@@ -7,4 +7,4 @@ class DjangocmsLatexConfig(AppConfig):
     name = 'djangocms_latex'
 
     def ready(self):
-        from djangocms_latex import signals
+        from djangocms_latex import signals  # noqa

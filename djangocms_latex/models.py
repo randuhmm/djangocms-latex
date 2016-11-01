@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals, absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import os
 import shutil
@@ -7,8 +7,8 @@ from subprocess import call
 from tempfile import mkdtemp
 
 from cms.models.pluginmodel import CMSPlugin
-from django.db import models
 from django.core.files.images import ImageFile
+from django.db import models
 
 
 EQUATION_TEMPLATE = '''

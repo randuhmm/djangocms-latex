@@ -36,7 +36,8 @@ class TestLatexModels(BaseTest):
         request = self.get_page_request(public, AnonymousUser())
         response = details(request, '')
 
-        self.assertContains(response, '<img class="responsive" src="/media/equations/%s/equation.png" />' % plugin.pk)
+        self.assertContains(response, '<img class="responsive" src="/media/'
+                            'equations/%s/equation.png" />' % plugin.pk)
 
     def test_model_save(self):
 

@@ -1,0 +1,42 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+
+sudo: false
+
+python:
+  - 2.7
+
+env:
+  matrix:
+  # - DJANGO='django18' CMS='cms31'
+  # - DJANGO='django18' CMS='cms32'
+  # - DJANGO='django18' CMS='cms33'
+  # - DJANGO='django18' CMS='cms34'
+  # - DJANGO='django19' CMS='cms32'
+  # - DJANGO='django19' CMS='cms33'
+  # - DJANGO='django19' CMS='cms34'
+  # - DJANGO='django110' CMS='cms32'
+  # - DJANGO='django110' CMS='cms33'
+  - DJANGO='django110' CMS='cms34'
+  - TOXENV='pep8'
+  - TOXENV='isort'
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libxml2-dev
+
+# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install:
+  - pip install -U tox>=1.8 coveralls
+  - "if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then export PYVER=py27; fi"
+  - "if [[ ${DJANGO}z != 'z' ]]; then export TOXENV=$PYVER-$DJANGO-$CMS; fi"
+
+# command to run tests, e.g. python setup.py test
+script: COMMAND='coverage run' tox -e$TOXENV
+
+after_success: coveralls
+
+cache:
+   directories:
+     - $HOME/.cache/pip
