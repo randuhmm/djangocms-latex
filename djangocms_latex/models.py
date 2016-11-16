@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
+from __future__ import absolute_import, print_function, unicode_literals
 
 import os
 import shutil
@@ -68,6 +68,6 @@ class LatexEquationPlugin(CMSPlugin):
                 os.chdir(original_dir)
                 shutil.rmtree(out_dir)
 
-            except Exception, e:
+            except Exception as e:
                 os.chdir(original_dir)
-                print e
+                print(e)

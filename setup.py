@@ -24,5 +24,6 @@ setup(
     install_requires=[
         'django-cms>=3.0',
     ],
+    zip_safe=False,
     test_suite='cms_helper.run',
 )
