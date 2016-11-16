@@ -20,9 +20,6 @@ env:
   - DJANGO='django19' CMS='cms32'
   - DJANGO='django19' CMS='cms33'
   - DJANGO='django19' CMS='cms34'
-  - DJANGO='django110' CMS='cms32'
-  - DJANGO='django110' CMS='cms33'
-  - DJANGO='django110' CMS='cms34'
   - TOXENV='pep8'
   - TOXENV='isort'
 
