@@ -1,6 +1,17 @@
 djangocms-latex
 ===============
 
+.. image:: https://travis-ci.org/randuhmm/djangocms-latex.svg?branch=master
+    :target: https://travis-ci.org/randuhmm/djangocms-latex
+    :alt: Latest Travis CI build status
+
+.. image:: https://coveralls.io/repos/github/randuhmm/djangocms-latex/badge.svg?branch=master
+    :target: https://coveralls.io/github/randuhmm/djangocms-latex?branch=master
+    :alt: Latest Coveralls test coverage
+
+.. image:: https://readthedocs.org/projects/rad-esp8266/badge/?version=latest
+    :target: http://rad-esp8266.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 LaTEX plugin for django CMS 3.0
 
@@ -29,6 +40,16 @@ The full documentation is at http://djangocms-latex.rtfd.org.
 Quickstart
 ----------
 
+#. Install the ``latex`` and ``dvipng`` command-line programs.
+   See `TeX Live <https://www.tug.org/texlive/>`_
+   for detailed instructions for your OS.
+
+   Ubuntu::
+
+    sudo apt-get -qq update;
+    sudo apt-get install -y texlive;
+    sudo apt-get install -y dvipng;
+
 #. Install djangocms-latex::
 
     pip install djangocms-latex
@@ -43,11 +64,4 @@ Quickstart
 
 #. Add "**latex equation**" plugin to your placeholders
 
-Features
---------
-
-* Use `highlight.js`_ to do syntax highlighting on provided code
-
-
-.. _highlight.js: http://latex.org/
 
